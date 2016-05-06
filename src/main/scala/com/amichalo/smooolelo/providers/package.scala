@@ -14,4 +14,5 @@ package object providers {
 
   trait StartupSettingsProvider extends Function0[List[String]]
   trait ConfigurationProvider extends Function0[Map[String, String]]
+  trait WorkingDirectoryProvider extends Function0[String]
 }

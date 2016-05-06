@@ -34,7 +34,8 @@ class RegistrationActor(gateway: MoooleloServerGateway, dataProvider: SMoooleloD
       ip = dataProvider.interfaceProvider.ip,
       port = serviceConfig.servicePort,
       health = dataProvider.healthProvider.apply(),
-      version = dataProvider.versionProvider.map(_.apply())
+      version = dataProvider.versionProvider.map(_.apply()),
+      workingDirectory = dataProvider.workingDirectoryProvider.map(_.apply())
     )
     gateway.register(request).onFailure { case t =>
       logger.error("Unable to register in Mooolelo server", t)

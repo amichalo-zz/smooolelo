@@ -26,7 +26,9 @@ object MoooleloServerGateway {
                                  ip: String,
                                  port: Option[Int],
                                  health: HealthStatus,
-                                 version: Option[String])
+                                 version: Option[String],
+                                 workingDirectory: Option[String]
+                                )
 
   case class HeartbeatRequest(id: Int,
                               serviceType: String,

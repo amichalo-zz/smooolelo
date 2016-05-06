@@ -5,7 +5,7 @@ import akka.stream.ActorMaterializer
 import com.amichalo.smooolelo.MoooleloClient
 import com.amichalo.smooolelo.config.{MoooleloClientConfig, MoooleloServiceConfig}
 import com.amichalo.smooolelo.domain.HealthStatus
-import com.amichalo.smooolelo.providers.{BasicInterfaceProvider, HealthProvider, SMoooleloDataProvider}
+import com.amichalo.smooolelo.providers._
 import com.typesafe.config.ConfigFactory
 
 object Example extends App {
@@ -26,7 +26,11 @@ object Example extends App {
     // Yes... our service is always healthy...
     healthProvider = new HealthProvider { override def apply(): HealthStatus = HealthStatus(true, None) },
     // We would like yo provide ip associated with wlan0 interface, it will also give you a hostname
-    interfaceProvider = new BasicInterfaceProvider("wlan0")
+    interfaceProvider = new BasicInterfaceProvider("wlan0"),
+    // We shouldn't pass hardcoded version but... ;)
+    versionProvider = Option(new VersionProvider { override def apply(): String = "v0.1"}),
+    startupSettingsProvider = Option(new JVMStartupSettingsProvider()),
+    workingDirectoryProvider = Option(new BasicWorkingDirectoryProvider())
   )
 
   // Create a client ActorSystem, ActorMaterializer, ExecutionContext are being passed implicitly
