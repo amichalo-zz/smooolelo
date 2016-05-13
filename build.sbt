@@ -1,5 +1,5 @@
 name := "smooolelo"
-version := "0.1"
+version := "0.0.1"
 organization := "com.amichalo"
 scalaVersion := "2.11.7"
 
