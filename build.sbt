@@ -1,6 +1,9 @@
 name := "smooolelo"
+
 version := "0.0.1"
+
 organization := "com.amichalo"
+
 scalaVersion := "2.11.7"
 
 scalacOptions := Seq("-target:jvm-1.8", "-unchecked", "-deprecation", "-encoding", "utf8")
